@@ -7,7 +7,7 @@ class Mailer extends helper.Mail {
     super();
 
     this.sgApi = sendgrid(keys.sendGridKey);
-    this.from_email = new helper.Email("anmeet619@gmail.com");
+    this.from_email = new helper.Email("nitikapokharel@gmail.com");
     this.subject = subject;
     this.body = new helper.Content("text/html", content);
     this.recipients = this.formatAddresses(recipients);
@@ -46,17 +46,7 @@ class Mailer extends helper.Mail {
       body: this.toJSON()
     });
 
-    //  const response = await this.sgApi.API(request);
-    //  return response;
-
-    const response = await this.sgApi.API(request, (error, response) => {
-      if (error) {
-        console.log("Error response received");
-      }
-      console.log(response.statusCode);
-      console.log(response.body);
-      console.log(response.headers);
-    });
+    const response = await this.sgApi.API(request);
     return response;
   }
 }
